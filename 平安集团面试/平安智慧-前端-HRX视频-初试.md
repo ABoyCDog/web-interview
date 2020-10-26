@@ -8,6 +8,29 @@
 
 ## 5、垂直居中的方式？
 
+    行内元素垂直居中：
+        1、line-height
+        设置行间的距离（行高），将要居中的元素的line-height值设置为和其块级父元素的height值一样时，其内部内容会垂直居中
+        用于单行的行内元素的垂直居中：
+    	.wrap {
+    		height: 100px;
+    		line-height:100px;
+    	}
+        注意：··line-height不能使用负值
+              ··在块级元素使用line-height是定义该元素基线之间的最小距离而不是最大距离
+        2、Vertical-align: middle；
+            .wrap{
+                display:inline-block;
+                vertical-align: middle;
+            }
+            .wrap::before{ //或者::after
+                content: '';
+                display: inline-block;
+                height: 100%;
+                display:inline-block;
+                vertical-align: middle;
+            }
+
 ## 6、http 和 https 的区别？
 
     协议：网络通信之间制定的一些规则
