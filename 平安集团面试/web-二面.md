@@ -14,6 +14,58 @@
 
 ## 8、如何在 vue 中使用 react 组件？
 
+  <hr>
+  vuera插件可以使得vue中使用react组件，react中使用vue组件。
+  <hr>
+
+  一、vue使用react组件
+  ### `1、安装依赖`
+
+  ```js
+    npm install vuera --save
+    npm install react react-dom --save
+  ```
+  ### `2、编辑main.js`
+  ```js
+    import { VuePlugin } from 'vuera'
+    vue.use(VuePlugin)
+  ```
+  ### `3、加入需要引入的react组件`
+  ```js
+    import MyReactComponent from './MyReactComponent'
+  ```
+  ### `4、可能出现的问题`
+  ①、vue中没有jsx文件格式问题
+  ```js
+    // 解决： 编辑webpack.base.conf.js,加入对jsx的支持
+
+    test:  /\.(js|jsx)(\?.*)?$/
+  ```
+  ②、.babelrc文件中默认引入了transform-vue-jsx，此插件将jsx转义成h function的形式供vue调用
+  ```js
+    // 解决：
+    // 引入插件
+
+    npm install --save-dev babel-plugin-transform-react-js
+    
+    // 并且在.babelrc文件中
+    // 用transform-react-jsx替换transform-vue-jsx
+
+    "plugins": ["transform-react-jsx"]
+  ```
+  ![image text](https://upload-images.jianshu.io/upload_images/2979086-888b19126c32374a.png?imageMogr2/auto-orient/strip|imageView2/2/w/1200/format/webp)
+
+  ![image](https://upload-images.jianshu.io/upload_images/2979086-702e961d83f176a3.png?imageMogr2/auto-orient/strip|imageView2/2/w/514/format/webp)
+
+  ![image text](https://upload-images.jianshu.io/upload_images/2979086-751846c73de9c581.png?imageMogr2/auto-orient/strip|imageView2/2/w/662/format/webp)
+
+  二、react中使用vue组件
+  ```js
+  // 安装依赖
+  npm install vuera --save
+  npm install vue --save
+  ```
+
 ## 9、vue proxy？
 
 vue-cli2 使用 proxyTable 字段，vue-cli3 使用 proxy 字段(位于 vue.config.js)，一般是在 devServer 内设置；
