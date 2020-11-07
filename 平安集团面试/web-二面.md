@@ -87,6 +87,16 @@ vue-cli2 使用 proxyTable 字段，vue-cli3 使用 proxy 字段(位于 vue.conf
   }
 ```
 
+proxy代理的原理：
+
+  要解决跨域，首先知道跨域是违反了同源策略的，同源策略就是协议域名端口都要一致的。
+  
+  那么要解决跨域，就是要将协议域名端口化不同为相同。通过一些方法设置代理，就是要请求发送或者接受的时候，设置一个中间层，将不同域名转换为相同的。
+
+  ![images](https://img-blog.csdnimg.cn/20200702172509942.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1NzI1MDQ2,size_16,color_FFFFFF,t_70)
+
+  vue-cli3的proxy代理解决跨域问题，和ES6的Proxy构造函数有什么关系，是怎么实现的？未完待续。。。
+
 ## 10、vue data 为什么需要函数创建？
 
   由js本身特性决定的。
