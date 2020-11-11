@@ -2,6 +2,69 @@
 
 ## 2、webpack 优化方式？
 
+  [传送门](https://www.cnblogs.com/wangjiachen666/p/11561186.html)
+
+  一、提高webpack打包速度
+
+  - 1.1、优化Loader搜索范围
+
+    对于loader来说，影响打包效率的首当其冲是 `babel`, 因为babel会将代码转化为字符串 生成 `AST`，再对AST继续转变再生成新的代码，项目越大，转换代码越多，效率越低。
+
+    优化的话，第一就是优化loader的文件搜索范围，使用loader时指定哪些文件不通过loader处理，或者指定哪些文件通过loader处理：
+    ```js
+      module.exports = {
+        module: {
+          rules: [
+            {
+              test: /\.js$/,
+              use: ['babel-loader'],
+              // 处理src文件夹下的文件
+              include: path.resolve('src'),
+              // 不处理node_modules下的文件
+              exclude: /node_modules/
+            }
+          ]
+        }
+      }
+    ```
+    因为对于babel来说，我们肯定是希望作用于js文件的，而且node_modules中的代码都是经过编译的，所以我们也没必要再去处理一次。
+
+    另外，我们还可以将babel打包过的文件缓存起来，下次只需要编译更改过的代码文件，这样就可以加速打包时间。
+    ```js
+      loader: 'babel-loader?cacheDirectory=true'
+    ```
+
+  - 1.2、使用多线程打包
+
+  - 1.3、noParse
+
+  - 1.4、打包文件分析工具
+
+  - 1.5、费时分析
+
+    `speed-measure-webpack-plugin` 打包速度测量插件。插件用于测量webpack构建速度，针对性的去优化花费时间长的模块代码。
+    ```js
+      const SpeedMeasureWebpackPlugin = require('speed-measure-webpack-plugin');
+      const smw = new SpeedMeasureWebpackPlugin();
+      // 用smw.wrap()包裹webpack的所有配置项
+      module.exports =smw.wrap({
+          module: {},
+          plugins: []
+      });
+    ```
+
+  二、减少webpack打包后的文件体积
+
+  - 2.1、对图片进行压缩和优化
+
+  - 2.2、删除无用的CSS样式
+
+  - 2.3、使用CDN方式加载资源
+
+  - 2.4、开启 `Tree Shaking`
+
+  - 2.5、按需加载 & 动态加载
+
 ## 3、webpack chunk 是什么？如何分割 chunk？
 
   1、'chunk'可以理解为模块函数的集合，也就是代码块。通过使用webpack打包处理，可以将代码中的多个入口文件、公共引用文件、异步加载文件等抽离成单独的个体，也就是我们打包后的一个个文件。我们可以利用chunk来提高 打包效率节省加载时间，更合理地利用浏览器的缓存等。
