@@ -1,19 +1,116 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>lazyLoad</title>
     <style>
+      html,body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+      }
+      #view {
+        color: red;
+        width: 600px;
+        height: 400px;
+      }
       .lazy-img {
-        background: url('./images/350x150.png') no-repeat center;
+        background: url('./images/loadding.gif') no-repeat center;
+      }
+      img {
+        margin-top: 20px;
+        width: 400px;
+        height: 200px;
+        background-size: cover;
+        background-position: center;
       }
     </style>
   </head>
   <body>
-    <div class="main-content">
+    <div id="view" class="main-content">
+      <img data-src="./images/6.png" class="lazy-img">
+      <img data-src="./images/6.png" class="lazy-img">
+      <img data-src="./images/6.png" class="lazy-img">
+      <img data-src="./images/6.png" class="lazy-img">
+      <img data-src="./images/6.png" class="lazy-img">
+      <img data-src="./images/6.png" class="lazy-img">
+      <img data-src="./images/6.png" class="lazy-img">
+      <img data-src="./images/6.png" class="lazy-img">
+      <img data-src="./images/6.png" class="lazy-img">
+      <img data-src="./images/6.png" class="lazy-img">
+      <img data-src="./images/6.png" class="lazy-img">
+      <img data-src="./images/6.png" class="lazy-img">
+      <img data-src="./images/6.png" class="lazy-img">
+      <img data-src="./images/6.png" class="lazy-img">
+      <img data-src="./images/6.png" class="lazy-img">
+      <img data-src="./images/6.png" class="lazy-img">
+      <img data-src="./images/6.png" class="lazy-img">
+      <img data-src="./images/6.png" class="lazy-img">
+      <img data-src="./images/6.png" class="lazy-img">
+      <img data-src="./images/6.png" class="lazy-img">
       <img data-src="./images/6.png" class="lazy-img">
     </div>
-    <script>
-
-    </script>
   </body>
+  <script>
+    // 调用
+    init()
+    
+    var _throttleFn
+
+    // 初始化
+    function init() {
+      inViewShow()
+      _throttleFn = _throttle(inViewShow)
+      document.addEventListener('scroll', _throttleFn)
+    }
+    function inViewShow() {
+      let imageElements = Array.prototype.slice.call(document.querySelectorAll('.lazy-img'))
+      console.log(imageElements)
+      let len = imageElements.length
+      for(let i = 0 ; i < len; i++) {
+        let imageElement = imageElements[i]
+        const rect = imageElement.getBoundingClientRect()
+        console.log('当前元素的getBoundingClientRect属性的top值 ', rect.top)
+        console.log('页面高度 ', document.documentElement.clientHeight)
+
+        // 出现在视野内时加载图片
+        // 通过获取当前元素的getBoundingClientRect 属性的 top值和页面的client进行对比
+        // 如果top值小于clientHeight，则说明元素出啊先在视野内了
+        if(rect.top < document.documentElement.clientHeight) {
+          imageElement.src = imageElement.dataset.src
+          // 移除调已经显示的
+          imageElements.splice(i, 1)
+          len--
+          i--
+
+          if(len === 0) {
+            // 如果全部都加载完， 则去掉滚动事件监听
+            document.removeEventListener('scroll', _throttleFn)
+          }
+        }
+      }
+    }
+
+    // 函数防抖
+    function _throttle(fn, delay = 15, mustRun = 30) {
+      let timmer = null
+      let start = null
+      let context = this
+      return function() {
+        let current = +(new Date())
+        let args = Array.prototype.slice.call(arguments)
+        clearTimeout(timmer)
+        if(start) {
+          start = current
+        }
+        if(current - start > mustRun) {
+          fn.apply(context, args)
+          start = current
+        } else {
+          timmer = setTimeout(() => {
+            fn.apply(context, args)
+          }, delay)
+        }
+      }
+    }
+  </script>
 </html>
