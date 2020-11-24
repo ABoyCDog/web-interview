@@ -90,8 +90,8 @@
       }
     }
 
-    // 函数防抖
-    function _throttle(fn, delay = 15, mustRun = 30) {
+    // 函数节流
+    function _throttle(fn, delay = 1500, mustRun = 30) {
       let timmer = null
       let start = null
       let context = this
