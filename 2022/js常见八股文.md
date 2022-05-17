@@ -1,43 +1,9 @@
 # js常见八股文
 
-## 1、手动实现promise.all
+## 1、箭头函数
 
-+ 要注意几点：
-  + 1、先判断参数是否iterator；
-  + 2、非promise实例进行Promise.resolve()
-  + 3、如果全部成功，状态变为 resolved，返回值将组成一个数组传给回调
-  + 4、只要有一个失败，状态就变为 rejected，返回值将直接传递给回调，且返回值也是新的 Promise 对象
-
-
-```js
-    promise.alllll = function(promise) {
-        const iterator = Symbol.iterator;
-        if(!promise[iterator]) return;
-        let count = 0;
-        let resolveArr = [];
-        return new Promise((resolve, reject) => {
-            for(let i = 0; i < promise.length; i++) {
-                if(!(promise[i] instanceof Promise)) {
-                    promise[i] = Promise.resolve(promise[i]);
-                }
-                promise[i].then(res => {
-                    resolveArr[i] = res;
-                    count++;
-                    if(count === promise.length) {
-                        return resolve(resolveArr);
-                    }
-                }).catch(err => {
-                    return reject(err);
-                })
-            }
-        });
-    }
-```
-
-## 2、实现深克隆
-
-+ 有一种简单的深克隆，但是无法覆盖对象中有对象、数组、函数、正则等。即
-```js
-const deepObj = JSON.parse(JSON.stringfy(obj));
-```
-+ 
++ 箭头函数相当于匿名函数，简化了函数定义。
++ 有两种写法，函数体是单语句时可以省略花括号{}和return，多语句时则不能省略。
++ 箭头函数最大的特点是没有this，所以它的this是从外部取的，继承外部上下文中的this，父级作用域的this；通过call和apply进行调用函数时，只能传递参数而不能绑定this。
++ 箭头函数没有原型和super，没有yield关键字所以也不能用作Generator函数。
++ 由于没有this，所以不能作为构造函数，不能使用new关键字。
