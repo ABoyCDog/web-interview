@@ -59,3 +59,15 @@ step2：在页面需要定位的内容加上id="print"。例如：<div id="print
 + 在vue中，computed是一个计算属性,类似于过滤器,对绑定到vIEw的数据进行处理,并监听变化。而watch监听复杂数据类型需用深度监听。这两者都可以在vue上实现检测数据的变化。而微信小程序不同于vue可以使用watch和computed做出相应的改变。小程序中只有函数this.setData()可以检测数据，所以小程序每次数据改变需要检测时都必须手动执行函数才可实现。
 + vue 里是通过 Object.defineProperty 来实现数据变化检测的，给该变量的 setter 里注入所有的绑定操作，就可以在该变量变化时带动其它数据的变化。
 + 在小程序里实现要比 vue 里简单，应为对于 data 里对象来说，vue 要递归的绑定对象里的每一个变量，使之响应式化。但是在微信小程序里，不管是对于对象还是基本类型，只能通过 this.setData() 来改变，这样我们只需检测 data 里面的 key 值的变化，而不用检测 key 值里面的 key 。
+
+## 7. vuex相关
++ state：在组件中使用...mapState来获取state值；
++ mutations：在组件中使用...mapMutations来获取mutations中的方法；
+
++ 要修改全局的state中的值，需要通过mutations来修改（只有mutations才允许直接修改state中的值）；
+  - 组件中触发mutations中的函数，需要使用commit来调用mutations中的函数；
++ 若要执行异步操作，则需要使用actions函数；
+  - actions函数中其实也是通过commit去触发mutations中的函数来改变state的值；
+  - 在组件中要使用触发actions函数，需要通过dispatch来触发。
+
+## 8. 
