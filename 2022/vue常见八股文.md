@@ -63,6 +63,7 @@ step2：在页面需要定位的内容加上id="print"。例如：<div id="print
 ## 7. vuex相关
 + state：在组件中使用...mapState来获取state值；
 + mutations：在组件中使用...mapMutations来获取mutations中的方法；
++ actions：在组件中使用...mapActions(['subAsync'])来调用actions中对应的action方法；
 
 + 要修改全局的state中的值，需要通过mutations来修改（只有mutations才允许直接修改state中的值）；
   - 组件中触发mutations中的函数，需要使用commit来调用mutations中的函数；
