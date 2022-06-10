@@ -8,7 +8,8 @@
 
     每一个组件实例都对应一个 watcher 实例，他会在组件渲染的过程中将 ‘接触’ 过的数据 property 记录为依赖。之后当依赖项的 setter 触发时，会通知watcher， 从而使它关联的组件重新渲染。
 
-    ![image](https://cn.vuejs.org/images/data.png)
+
+![image](https://cn.vuejs.org/images/data.png)
 
 ##### 2、监测变化的注意事项<br>
 
