@@ -35,7 +35,9 @@
         - 实现对基础数据、业务数据、专题数据的统一入库发布、更新、修改、删除等操作.
 + 3、空间可视化模块
 + 4、如何接入到项目中
-    - 
+    - 使用 SpringCloud + PostgreSQL + vue-cli 搭建的云平台，其中云平台的后台管理系统ts-ui，就是一个前后端分离的模式。
+    - 什么是SpringCloud 和 vue-cli？
+        > 做个类比：SpringCloud = SpringBoot + 一堆第三方组件； Vue CLI = Vue + 一堆的js插件；
 
 ## 四、应用
 + 交通信息系统：调用地图服务 <-> 道路数据、站点数据
