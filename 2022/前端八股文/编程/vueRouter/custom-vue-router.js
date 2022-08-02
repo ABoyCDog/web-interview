@@ -60,7 +60,7 @@ VueRouter.install = function(Vue) {
 
                 return createElement(
                     // comp,
-                    matchedComponent,
+                    matchedComponent
                 );
             }
     })
