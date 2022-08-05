@@ -81,3 +81,4 @@ step2：在页面需要定位的内容加上id="print"。例如：<div id="print
 ## 9. vue的路由
 + vue-router是一个插件
 + 导航守卫 
+  - to from next
