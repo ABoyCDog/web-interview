@@ -7,5 +7,21 @@
 // - 场景2: 懒加载、滚动加载、加载更多或监听滚动条位置
 // - 场景3: 防止高频点击提交，防止表单重复提交
 
+// 简单实现
+// - 时间戳
+function _throttle(fn, wait) {
+    let current;
+    let start;
+    return function() {
+        let context = this;
+        let args = arguments;
+        current = +new Date();
+        if(current - start > wait) {
+            fn.apply(context, args);
+            start = current;
+        }
+    }
+}
 
+// - 定时器
 
