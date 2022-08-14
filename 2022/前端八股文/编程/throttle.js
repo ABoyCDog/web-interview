@@ -25,3 +25,43 @@ function _throttle(fn, wait) {
 
 // - 定时器
 
+function _throttle(fn, wait) {
+    let timer = null;
+    return function() {
+        let context = this;
+        let args = arguments;
+        if(!timer) {
+            timer = setTimeout(function() {
+                fn.apply(context, args);
+                timer = null;
+            }, wait)
+        }
+    }
+}
+
+// 优化完整版 结合时间戳与定时器
+function _throttle(fn, wait, mustRun) {
+    let timer = null;
+    let start = 0;
+
+    return function() {
+        let context = this;
+        let args = Array.prototype.slice.call(arguments);
+        let current = +new Date();
+        clearTimeout(timer);
+
+        if(!start) {
+            start = current;
+        }
+
+        // 时间间隔大于既定时间间隔则直接执行函数
+        if(current - start > mustRun) {
+            fn.apply(context, args);
+            start = current;
+        } else {
+            timer = setTimeout(function() {
+                fn.apply(context, args);
+            }, wait)
+        }
+    }
+}
