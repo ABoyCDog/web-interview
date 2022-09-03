@@ -1,4 +1,8 @@
 # vuex相关
+
+## 原理 
++ vuex通过Vue.use(vuex)，从而调用install方法，通过applyMixin(Vue)在任意组件执行this.$store都能访问到store对象，实现将store挂载注入到组件中。
+## 使用
 + state：在组件中使用...mapState来获取state值；
 + mutations：在组件中使用...mapMutations来获取mutations中的方法；
 + actions：在组件中使用...mapActions(['subAsync'])来调用actions中对应的action方法；
