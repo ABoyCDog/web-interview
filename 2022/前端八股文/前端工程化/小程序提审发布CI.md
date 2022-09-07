@@ -17,3 +17,9 @@ https://juejin.cn/post/7105018197698412558
 3. 调用预览的api，打包预览的二维码，以实现多个版本的代码本地测试
 4. 调用上传的api，自动提交代码至微信后台，以便提审
 5. 
+
+# vuex与vue的响应式例子有什么关系
+我们也可以通过vuex实现同样的功能。vuex中的四部分与vue的对应关系：
++ state--->data、
++ mutations--->methods、
++ getters--->computed、actions：为了处理异步，不能直接更新state，需要借助mutations。
