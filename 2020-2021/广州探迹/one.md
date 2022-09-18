@@ -2,7 +2,7 @@
 
 ##### 1、追踪变化<br>
 
-当一个 vue 组件，也就是一个 vue 实例中的 data 数据变化时，如一个 js 对象，Vue 将遍历这个对象所有的 property，也就是属性，并使用 Object.definedProperty 来将这些 property 转变为 getter/setter。Object.definedProperty 是 ES5 的一个无法 shim 的特性，这也是为什么 Vue 不支持 ie8 以及更低版本的浏览器的原因。
+当一个 vue 组件，也就是一个 vue 实例中的 data 数据变化时，如一个 js 对象，Vue 将遍历这个对象所有的 property，也就是属性，并使用 Object.defineProperty 来将这些 property 转变为 getter/setter。Object.defineProperty 是 ES5 的一个无法 shim 的特性，这也是为什么 Vue 不支持 ie8 以及更低版本的浏览器的原因。
 
 > 而这些 getter/setter 对于用户来说是不可见的，但是在内部 Vue 是能够追踪的依赖，在 property 被访问和修改的时候通知变更。
 

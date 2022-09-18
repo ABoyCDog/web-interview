@@ -26,3 +26,8 @@ var proxy = new Proxy(targetObject, handler);
     - get、set、has、deleteProperty、ownKeys、getOwnPropertyDescriptor、defineProperty、preventExtensions、getPrototypeOf、isExtensible、setPrototypeOf、apply、construct共13种
 
 
+## Proxy的应用场景
++ 最常见的就是vue3种数据响应就是使用Proxy对数据变更时的属性进行拦截代理
++ 实现web服务的客户端（Proxy对象可以拦截目标对象的任意属性）
++ 实现数据库的ORM层
++ 

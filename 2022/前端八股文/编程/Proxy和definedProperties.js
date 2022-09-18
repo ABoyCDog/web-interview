@@ -6,7 +6,7 @@
 
 let a = {}
 
-// 1. 使用Object.definedProperty
+// 1. 使用Object.defineProperty
 Object.defineProperties(a, {
     "x": {
         get: function() {
