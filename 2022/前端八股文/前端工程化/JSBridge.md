@@ -14,5 +14,13 @@
 + web端和native可以类比 Client/Server 模式，web端调用一个接口就比如client向server端发送一个请求类似，JSB在这充当了一个类似HTTP协议的角色，所以实现JSB主要有两点：
     1. 将JS接口封装成Native原生接口；
     2. 将Native原生接口封装成JS接口；
-    
-+ 
+
+    - Native -> Web
+        + 
+    - Web -> Native
+        + 
+
+## 开源的JSBridge
++ JSB的完整实现还是比较麻烦的，目前比较主流的主要有
+    1. DSBridge，通过注入API的形式；
+    2. JsBridge，通过拦截URL Schema；
