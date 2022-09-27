@@ -11,4 +11,8 @@
 + WebView控件除了能加载指定的url外，还可以对URL请求、JavaScript的对话框、加载进度、页面交互进行强大的处理，之后会提到拦截请求、执行JS脚本都依赖于此；
 
 ## JSBridge实现原理
-+ web端和native可以类比 Client/Server 模式，web端调用一个接口就比如client向server端发送一个请求类似，JSB在这充当了一个类似HTTP协议的角色，
++ web端和native可以类比 Client/Server 模式，web端调用一个接口就比如client向server端发送一个请求类似，JSB在这充当了一个类似HTTP协议的角色，所以实现JSB主要有两点：
+    1. 将JS接口封装成Native原生接口；
+    2. 将Native原生接口封装成JS接口；
+    
++ 
