@@ -9,6 +9,8 @@
 + vue的v-model结合实际的组件例子说一说
 + webpack的loader、plugins等、分包
 + async/await以及Promise
++ ts中 any和unknown 区别
+    - 都是ts中的顶级类型，主要区别在于使用any就是彻底放弃了类型检查，而unknown则是较于any更为严格，他仍会进行某些检查
 + 后端的了解
 + 数据结构，如二叉树的实际应用经典例子、堆如大顶堆小顶堆、
     - 二叉树：主要就是用于搜索场景，后端的treeMap，https://www.zhihu.com/question/29263118

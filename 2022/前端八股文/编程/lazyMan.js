@@ -6,6 +6,7 @@ class _LazyMan {
         this.queue = [];
         this.queue.push(() => {
             console.log('Hi! This is ' + name + '!');
+            this.next(); // 这一遍执行很重要！！！
         });
         setTimeout(() => {
             this.next();
